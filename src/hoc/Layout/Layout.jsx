@@ -1,7 +1,10 @@
-const Layout = ({ children }) => {
+import classes from './Layout.module.css';
+import Quiz from '../../Containers/Quiz/Quiz';
+
+const Layout = () => {
   return (
-    <div>
-      <main>{children}</main>
+    <div className={classes.Layout}>
+      <Quiz />
     </div>
   );
 };
