@@ -1,5 +1,6 @@
 import classes from './Auth.module.css';
 import Button from '../../Components/UI/Button/Button';
+import Input from '../../Components/UI/Input/Input';
 
 const Auth = () => {
   const loginHandler = () => {};
@@ -16,8 +17,8 @@ const Auth = () => {
         <h1>Authorization</h1>
 
         <form className={classes.AuthForm} onSubmit={submitHandler}>
-          <input type='text' />
-          <input type='text' />
+          <Input label='Email' />
+          <Input label='Password' errorMessage={'Test'} />
 
           <Button type='success' onClick={loginHandler}>
             Log in
