@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Layout.module.css';
-import Quiz from '../../Containers/Quiz/Quiz';
 import MenuToggle from '../../Components/Navigation/MenuToggle/MenuToggle';
 import Drawer from '../../Components/Navigation/Drawer/Drawer';
 
@@ -31,7 +30,7 @@ class Layout extends Component {
           isOpen={this.state.menu}
         />
 
-        <Quiz />
+        <main>{this.props.children}</main>
       </div>
     );
   }

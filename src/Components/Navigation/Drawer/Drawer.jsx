@@ -1,8 +1,13 @@
 import classes from './Drawer.module.css';
 import Backdrop from '../../UI/Button/Backdrop/Backdrop';
 import { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const links = [1, 2, 3];
+const links = [
+  { to: '/', label: 'List' },
+  { to: '/auth', label: 'Authorization' },
+  { to: '/quiz-creator', label: 'Create Test' },
+];
 
 const Drawer = (props) => {
   const cls = [classes.Drawer];
@@ -11,11 +16,21 @@ const Drawer = (props) => {
     cls.push(classes.close);
   }
 
+  const linkClickHandler = () => {
+    props.onClose();
+  };
+
   const renderLinks = () => {
     return links.map((link, index) => {
       return (
         <li key={index}>
-          <a href='sampleHref'>Link {link}</a>
+          <NavLink
+            to={link.to}
+            activeclassname={classes.active}
+            onClick={linkClickHandler}
+          >
+            {link.label}
+          </NavLink>
         </li>
       );
     });
