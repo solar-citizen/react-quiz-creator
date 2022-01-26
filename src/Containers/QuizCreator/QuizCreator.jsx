@@ -9,6 +9,7 @@ import {
 import Input from '../../Components/UI/Input/Input';
 import { Auxiliary } from '../../hoc/Auxiliary/Auxiliary';
 import { Select } from '../../Components/UI/Select/Select';
+import axios from 'axios';
 
 // state.formControls.option1/2/3/4
 function createOptionControl(optionNumber) {
@@ -94,11 +95,25 @@ export default class QuizCreator extends Component {
     });
   };
 
-  createQuizHandler = (event) => {
+  createQuizHandler = async (event) => {
     event.preventDefault();
 
-    console.log(this.state.quiz);
-    // server inc
+    try {
+      await axios.post(
+        'https://react-quiz-2-929a0-default-rtdb.europe-west1.firebasedatabase.app/quizes.json',
+        this.state.quiz
+      );
+      // обнуление стейта после
+      // отправки теста
+      this.setState({
+        quiz: [],
+        formControls: createFormControls(),
+        rightAnswerId: 1,
+        isFormValid: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   onChangeHandler = (value, controlName) => {
@@ -183,7 +198,7 @@ export default class QuizCreator extends Component {
               onClick={this.createQuizHandler}
               disabled={this.state.quiz.length === 0}
             >
-              Create Test
+              Create Quiz
             </Button>
           </form>
         </div>
