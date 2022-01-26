@@ -4,9 +4,9 @@ import { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const links = [
-  { to: '/', label: 'List' },
-  { to: '/auth', label: 'Authorization' },
-  { to: '/quiz-creator', label: 'Create Test' },
+  { to: '/', label: 'List', exact: true },
+  { to: '/auth', label: 'Authorization', exact: false },
+  { to: '/quiz-creator', label: 'Create Test', exact: false },
 ];
 
 const Drawer = (props) => {

@@ -9,7 +9,7 @@ import {
 import Input from '../../Components/UI/Input/Input';
 import { Auxiliary } from '../../hoc/Auxiliary/Auxiliary';
 import { Select } from '../../Components/UI/Select/Select';
-import axios from 'axios';
+import axios from '../../axios/axios-quiz';
 
 // state.formControls.option1/2/3/4
 function createOptionControl(optionNumber) {
@@ -99,10 +99,7 @@ export default class QuizCreator extends Component {
     event.preventDefault();
 
     try {
-      await axios.post(
-        'https://react-quiz-2-929a0-default-rtdb.europe-west1.firebasedatabase.app/quizes.json',
-        this.state.quiz
-      );
+      await axios.post('/quizes.json', this.state.quiz);
       // обнуление стейта после
       // отправки теста
       this.setState({
